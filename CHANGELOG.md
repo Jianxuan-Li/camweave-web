@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 — 2026-11-05
+
+- Rebrand as CameraWeave Web, matching CameraWeave and CameraWeave Viewer.
+- Preserve existing camera storage, cookies, control headers, Compose volumes and GHCR coordinates for upgrades.
+- Update product guidance and project website to https://cameraweave.com.
+
 ## 1.0.0 — 2026-09-27
 
 - Self-hosted responsive web viewer with up to four simultaneous live cameras and pagination for additional saved cameras.

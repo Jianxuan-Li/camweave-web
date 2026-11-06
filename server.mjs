@@ -11,7 +11,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const fail = (status, message) => Object.assign(new Error(message), {status});
 export function cameraURL(value, hosts) {
   let u;
-  try { u = new URL(value); } catch { throw fail(400, 'Paste the complete viewing link from CamWeave Camera.'); }
+  try { u = new URL(value); } catch { throw fail(400, 'Paste the complete viewing link from CameraWeave.'); }
   if (!['http:', 'https:'].includes(u.protocol) || u.username || u.password || u.search || u.hash ||
       !/^\/watch\/[A-Za-z0-9_-]{5,128}\/?$/.test(u.pathname)) throw fail(400, 'Use a complete http(s) camera viewing link.');
   if (!hosts.has(u.hostname.toLowerCase())) throw fail(400, 'This camera host is not allowed. Add it to CAMERA_HOSTS on your server and restart.');
@@ -89,9 +89,9 @@ export async function createApp(options) {
       const url = new URL(req.url, origin), path = url.pathname;
       if (!['GET', 'POST', 'DELETE'].includes(req.method)) throw fail(405, 'Method not allowed.');
       if (req.method !== 'GET' && (req.headers.origin !== origin || req.headers['x-camweave-control'] !== '1')) throw fail(403, 'Same-origin request required.');
-      if (req.method === 'GET' && ['/', '/app.js', '/style.css'].includes(path)) {
+      if (req.method === 'GET' && ['/', '/app.js', '/style.css', '/favicon.svg'].includes(path)) {
         const asset = path === '/' ? 'index.html' : path.slice(1);
-        res.setHeader('Content-Type', asset.endsWith('.html') ? 'text/html; charset=utf-8' : asset.endsWith('.js') ? 'text/javascript; charset=utf-8' : 'text/css; charset=utf-8');
+        res.setHeader('Content-Type', asset.endsWith('.html') ? 'text/html; charset=utf-8' : asset.endsWith('.js') ? 'text/javascript; charset=utf-8' : asset.endsWith('.svg') ? 'image/svg+xml' : 'text/css; charset=utf-8');
         return res.end(await readFile(resolve(root, 'public', asset)));
       }
       if (path === '/api/login' && req.method === 'POST') {
@@ -181,6 +181,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const port = Number(process.env.PORT || 8080), host = process.env.HOST || '127.0.0.1';
   const publicURL = process.env.PUBLIC_URL || `http://127.0.0.1:${port}`;
   createApp({password: process.env.ADMIN_PASSWORD, publicURL, cameraHosts: (process.env.CAMERA_HOSTS || '').split(','), dataDir: process.env.DATA_DIR || './data'})
-    .then(server => server.listen(port, host, () => console.log(`CamWeave Web listening at ${publicURL}. Camera links are stored only on this server.`)))
+    .then(server => server.listen(port, host, () => console.log(`CameraWeave Web listening at ${publicURL}. Camera links are stored only on this server.`)))
     .catch(error => { console.error(error.message); process.exitCode = 1; });
 }

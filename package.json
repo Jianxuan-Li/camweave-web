@@ -1,7 +1,7 @@
 {
   "name": "camweave-web",
-  "version": "1.0.1",
-  "description": "Self-hosted multi-camera viewer for CamWeave",
+  "version": "1.0.2",
+  "description": "Self-hosted multi-camera viewer for CameraWeave",
   "type": "module",
   "license": "MIT",
   "engines": { "node": ">=24" },
