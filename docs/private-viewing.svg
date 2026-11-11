@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="434" viewBox="0 0 480 434" role="img" aria-labelledby="title desc">
+  <title id="title">Watching your cameras over Tailscale</title>
+  <desc id="desc">Your browser connects to CameraWeave Web on your computer. Your computer connects to your camera iPhones. Both connections are encrypted. Devices without access cannot connect through your private Tailscale network.</desc>
+  <defs>
+    <linearGradient id="pipe" x2="100%" y2="0%">
+      <stop stop-color="#adc48a"/>
+      <stop offset=".5" stop-color="#f2f8df"/>
+      <stop offset="1" stop-color="#adc48a"/>
+    </linearGradient>
+    <g id="locked-pipe">
+      <rect x="-16" width="32" height="42" fill="url(#pipe)" stroke="#8d9f6a"/>
+      <path d="M-17 1h34m-34 40h34" stroke="#8d9f6a" stroke-width="3" stroke-linecap="round"/>
+      <g transform="translate(0 20)" fill="none" stroke="#202922" stroke-width="1.75" stroke-linejoin="round">
+        <rect x="-6" y="-1" width="12" height="9" rx="2"/>
+        <path d="M-3.5-1v-2a3.5 3.5 0 0 1 7 0v2"/>
+      </g>
+    </g>
+  </defs>
+
+  <rect x="1" y="1" width="478" height="432" rx="24" fill="#e7eae6" stroke="#cbd1c9" stroke-width="2"/>
+  <g font-family="system-ui, -apple-system, sans-serif" fill="#202922">
+    <text x="26" y="35" font-size="18" font-weight="650">Internet</text>
+    <rect x="24" y="51" width="432" height="327" rx="20" fill="#eef3d8" stroke="#cbd4b1"/>
+    <g text-anchor="middle">
+      <text x="240" y="82" font-size="20" font-weight="650">Your private Tailscale network</text>
+      <text x="240" y="104" font-size="15" fill="#4b584b">Encrypted connections</text>
+    </g>
+
+    <use href="#locked-pipe" x="240" y="177"/>
+    <use href="#locked-pipe" x="240" y="275"/>
+
+    <g fill="#fafaf5" stroke="#cbd4b1">
+      <rect x="64" y="121" width="352" height="56" rx="13"/>
+      <rect x="64" y="219" width="352" height="56" rx="13"/>
+      <rect x="64" y="317" width="352" height="56" rx="13"/>
+    </g>
+    <g fill="none" stroke="#202922" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="87" y="139" width="27" height="21" rx="3"/>
+      <path d="M87 145h27m-22-3h.1m4 0h.1"/>
+      <rect x="87" y="235" width="27" height="19" rx="3"/>
+      <path d="M100.5 254v6m-6 0h12"/>
+      <rect x="92" y="332" width="17" height="26" rx="4"/>
+      <path d="M98 354h5"/>
+    </g>
+    <g font-size="18" font-weight="650">
+      <text x="130" y="144">Your viewing device</text>
+      <text x="130" y="242">Your computer</text>
+      <text x="130" y="340">Your camera iPhones</text>
+    </g>
+    <g font-size="15" fill="#4b584b">
+      <text x="130" y="165">Open the private link in a browser</text>
+      <text x="130" y="263">Runs CameraWeave Web</text>
+      <text x="130" y="361">Run the CameraWeave app</text>
+    </g>
+
+    <circle cx="33" cy="405" r="8" fill="none" stroke="#4b584b" stroke-width="1.75"/>
+    <path d="m27.5 410.5 11-11" stroke="#4b584b" stroke-width="1.75"/>
+    <text x="50" y="411" font-size="16" fill="#4b584b">Unapproved devices stay outside the VPN.</text>
+  </g>
+</svg>

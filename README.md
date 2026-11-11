@@ -59,25 +59,11 @@ No npm dependencies need installing. To build your own container, run `docker bu
 
 ### Your computer + Tailscale: which address do I open?
 
-**Open your computer’s private Tailscale HTTPS address to see all your cameras.** It looks like a website address, but with Tailscale Serve it is reachable only through your private Tailscale network, subject to your access rules. CameraWeave Web runs on your own computer, which must stay awake and connected.
+**Connect to Tailscale, then open your computer’s private HTTPS link in your browser.** Your computer runs CameraWeave Web and connects to your cameras. Keep it awake and connected while you watch.
 
-```mermaid
-flowchart TB
-  subgraph privateNet["Your private Tailscale network"]
-    direction TB
-    viewer["1. Your phone or another computer<br/>Tailscale connected + web browser"]
-    address["2. Open your computer’s private viewer URL<br/>https://my-computer.example-tailnet.ts.net"]
-    web["3. Your computer<br/>Tailscale Serve → CameraWeave Web in Docker<br/>Sign in to see all cameras"]
-    cameras["4. Your camera iPhones<br/>CameraWeave + Tailscale<br/>Camera apps stay open and unlocked"]
-    viewer -->|"Private HTTPS access"| address
-    address --> web
-    web -->|"Private camera links: video and controls"| cameras
-  end
-  style privateNet fill:#f0f9f5,stroke:#28765b,stroke-width:2px
-  style address fill:#d9f2e5,stroke:#28765b,stroke-width:2px
-```
+![A browser connects to your computer running CameraWeave Web, which connects to your camera iPhones. Both connections are encrypted inside your private Tailscale network. Devices without access stay outside it.](docs/private-viewing.svg)
 
-The address above is an **example**. Copy the real HTTPS URL printed by `tailscale serve`; do not type the example literally.
+Copy the HTTPS link printed by `tailscale serve`. With Tailscale Serve, only devices allowed by your Tailscale rules can open it.
 
 | Where you are | Address to use |
 |---|---|
